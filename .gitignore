@@ -1,5 +1,5 @@
 # /environement/dev/variables/dev.tfvars
-/environement/dev/variables/dev.backend.tfvars
-/environement/dev/.terraform/
+/environment/dev/variables/dev.backend.tfvars
+/environment/dev/.terraform/
 *.lock.hcl
 *.tfstate
