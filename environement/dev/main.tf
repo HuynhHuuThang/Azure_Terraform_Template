@@ -12,16 +12,17 @@ terraform {
 }
 
 provider "azurerm" {
-  features {
-    client_id = 
-    client_secret = 
-  }
+  features {}
+  client_id = var.ARM_CLIENT_ID
+  client_secret = var.ARM_CLIENT_SECRET
+  tenant_id = var.ARM_TENANT_ID
+  subscription_id = var.ARM_SUBSCRIPTION_ID
 }
 ##*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*##
 #                   Resource Group                    #
 #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
 module "resource_group" {
-  source              = "./modules/resource_group"
+  source              = "../../modules/resource_group"
   resource_group_name = var.resource_group_name
   location            = var.location
 }
@@ -30,7 +31,7 @@ module "resource_group" {
 #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
 
 module "virtual_network" {
-  source               = "./modules/virtual_network"
+  source               = "../../modules/virtual_network"
   resource_group_name  = module.resource_group.rg_name
   location             = var.location
   virtual_network_name = var.virtual_network_name
@@ -40,7 +41,7 @@ module "virtual_network" {
 #                   2.Module Virtual Subnet           #
 #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
 module "subnet" {
-  source = "./modules/virtual_network/subnet"
+  source = "../../modules/virtual_network/subnet"
   resource_group_name = var.resource_group_name
   location = var.location
   subnet_dev_name = var.subnet_dev_name

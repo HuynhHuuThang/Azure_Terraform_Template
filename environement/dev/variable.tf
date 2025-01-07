@@ -1,28 +1,28 @@
 ##*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*##
 #                   Commons Variables                 #
 #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
-variable "subscription_id" {
+variable "ARM_SUBSCRIPTION_ID" {
 #   description = "Specifies the subcription id for all resources"
 #   type = string
 #   default = "508d78f4-b324-4fd2-8c65-97a16b34c52b"
 #   sensitive = true  
 }
 
-variable "tenant_id" {
+variable "ARM_TENANT_ID" {
 #   description = "Specifies the tenant id for all resources"
 #   type = string
 #   default = "93f33571-550f-43cf-b09f-cd331338d086"
 #   sensitive = true
 }
 
-variable "client_id" {
+variable "ARM_CLIENT_ID" {
 #   description = "Specifies the client id for all resources"
 #   type = string
 #   default = "fd6c4af3-1185-4f4f-a08a-a87efa820f69"
 #   sensitive = true
 }
 
-variable "client_secret" {
+variable "ARM_CLIENT_SECRET" {
 #   description = "Specifies the client secret for all resources"
 #   type = string
 #   default = "2uM8Q~.KQ4H0V~KY2.juaUWYaz4EbNVZHqIRDb7L"

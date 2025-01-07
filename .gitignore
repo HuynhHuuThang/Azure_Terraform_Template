@@ -1,2 +1,5 @@
-/environement/dev/variables/dev.tfvars
+# /environement/dev/variables/dev.tfvars
 /environement/dev/variables/dev.backend.tfvars
+/environement/dev/.terraform/
+*.lock.hcl
+*.tfstate
