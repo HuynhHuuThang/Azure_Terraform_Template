@@ -16,4 +16,5 @@ variable "location" {
 variable "nsg_name" {
   description = "name of network security group"
   type = string
+  default = "agent-vm-nsg"
 }

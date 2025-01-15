@@ -11,10 +11,10 @@ variable "location" {
   type = string
 }
 ##*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*##
-#                   Public IP Variables               #
+#                   Storage Account Variables         #
 #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
-variable "public_ip_name" {
-  description = "name of public ip"
+variable "agent_sa_name" {
+  description = "Storage account name for agent VM"
   type = string
-  default = "public-ip"
+  default = "agentvmsa"
 }
