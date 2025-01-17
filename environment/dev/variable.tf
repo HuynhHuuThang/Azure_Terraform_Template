@@ -40,13 +40,18 @@ variable "location" {
   default     = "southeastasia"
 }
 
+variable "environment" {
+  description = "Specifies the environment for the resource group and all the resources"
+  type        = string
+  default     = "dev"
+}
 ##*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*##
 #                  Resource Group Variables           #
 #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
 variable "resource_group_name" {
   description   = "resource group name"
   type          = string
-  default       = "rg"
+  default       = "rg-npd"
 }
 
 ##*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*##
@@ -66,10 +71,10 @@ variable "vnet_address_range" {
 ##*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*##
 #                2. Subnet Variables                  #
 #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
-variable "subnet_dev_name" {
+variable "subnet_name" {
   description = "name of dev subnet"
   type = string
-  default = "vnet-subnet"
+  default = "subnet"
 }
 variable "subnet_dev_ip_range" {
   description = "IP range for dev subnet"
@@ -106,13 +111,13 @@ variable "nsg_name" {
 variable "nic_name" {
   description = "name of network interface"
   type = string
-  default = "agent-vm-nic"
+  default = "vm-nic"
   
 }
 variable "ip_configuration_name" {
   description = "name of ip configuration"
   type = string
-  default = "agent-ip-config"
+  default = "ip-config"
 }
 variable "private_ip_address_allocation" {
   description = "private ip address allocation"
@@ -131,11 +136,6 @@ variable "vm_size" {
   description = "size of virtual machine"
   type = string
   default = "Standard_B1s"
-}
-variable "vm_os_disk_name" {
-  description = "name of os disk"
-  type = string
-  default = "agent-vm-os-disk"
 }
 
 variable "agent_public_ip_name" {

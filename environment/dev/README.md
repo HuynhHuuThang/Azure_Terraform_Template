@@ -1,3 +1,5 @@
+//// Naming Convention
+Project Name + Root Resource Name + Child Resource Name + Environment Name + Random String (optional)
 //// Create Azure Devops Agent on A Linux VM
 https://learn.microsoft.com/en-us/azure/virtual-machines/linux/quick-create-terraform?tabs=azure-cli
 1.Create a random value for the Azure resource group name using random_pet.
