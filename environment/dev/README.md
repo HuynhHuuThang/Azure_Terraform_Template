@@ -125,7 +125,7 @@ This is an example of how you may give instructions on setting up your project l
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
-
+Installing Terraform:
 * (Windows) Using the package manager [choco](https://chocolatey.org/install) to install Terraform.
   ```sh
   choco install terraform
@@ -159,6 +159,14 @@ Ensure that your system is up to date and you have installed the gnupg, software
   ```sh
   terraform --help
   ```
+* Azure Agent prerequisites:
+1. Login to [Azure Devops Service](https://aex.dev.azure.com/) and create an Organization for your projects.
+2. Within Azure Devops select user settings at the top right corner and select Personal Access Tokens.
+3. Create New token - **Make sure that only Agent Pools Read & Manage is selected** 
+4. Save the PAT values for later usages.
+
+
+
 ### Installation
 
 _Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._

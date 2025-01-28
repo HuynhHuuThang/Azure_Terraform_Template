@@ -5,3 +5,5 @@ ARM_CLIENT_SECRET = "tf18Q~uHUnN2wQRlV447wQF-rWqF_PPWjkDHwbjk"
 
 //// Agent VM Credentials
 admin_password = "Admin@123456"
+
+

@@ -135,5 +135,13 @@ module "agent_vm" {
     module.agent_vm_sa ]
 }
 ##*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*##
+#           8.Module Agent VM Ext                     #
+#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
+module "agent_vm_ext" {
+  source = "../../modules/virtual_machine/vm_extensions/ado_agent"
+  agent_vm_id = module.agent_vm.agent_vm_id
+  depends_on = [ module.agent_vm ]
+}
+##*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*##
 #           9.Module Agent API resources              #
 #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
