@@ -216,6 +216,8 @@ Resolve commit and push error for secret protection
 `git rebase -i 05c93ca40fbdd60d373a5d4531ec01dac7ddbe66~1`
 - An interative editor is the same as vim using e to edit pick to edit
 `git commit -amend`
+`git add .`
+`git rebase --continue`
 
 
 <!-- ROADMAP -->
