@@ -197,6 +197,12 @@ _Below is an example of how you can instruct your audience on installing and set
 <!-- USAGE EXAMPLES -->
 ## Usage
 
+build source:
+- dev : create a dev.tfvars for secret variables.
+        run terraform init at the dev environment root folder
+        run terraform validate to validate the syntax
+        run terraform plan -var-file <filename> to checking for resource changes
+
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
 _For more examples, please refer to the [Documentation](https://example.com)_

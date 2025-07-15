@@ -6,3 +6,5 @@
 *.tfstate.*
 *.env
 *.terraform
+*.tfvars
+*.txt

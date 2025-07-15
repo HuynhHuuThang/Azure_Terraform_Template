@@ -42,9 +42,9 @@ module "resource_group" {
   resource_group_name = " ${var.project_name}-${var.resource_group_name}-${var.environment}-${random_string.random.result}"
   location            = var.location
 }
-##*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*##
-#                   1.Module Virtual Network          #
-#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
+#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*##
+#                 1.Module Virtual Network          #
+#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
 
 module "virtual_network" {
   source               = "../../modules/virtual_network"
