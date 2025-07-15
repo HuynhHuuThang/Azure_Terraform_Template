@@ -210,6 +210,13 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+<!-- WorkArround -->
+Resolve commit and push error for secret protection
+- remove secret/files that contain secret from previous commit
+`git rebase -i 05c93ca40fbdd60d373a5d4531ec01dac7ddbe66~1`
+- An interative editor is the same as vim using e to edit pick to edit
+`git commit -amend`
+
 
 <!-- ROADMAP -->
 ## Roadmap
