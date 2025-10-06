@@ -197,12 +197,6 @@ _Below is an example of how you can instruct your audience on installing and set
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-build source:
-- dev : create a dev.tfvars for secret variables.
-        run terraform init at the dev environment root folder
-        run terraform validate to validate the syntax
-        run terraform plan -var-file <filename> to checking for resource changes
-
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
 _For more examples, please refer to the [Documentation](https://example.com)_
@@ -210,14 +204,40 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-<!-- WorkArround -->
-Resolve commit and push error for secret protection
-- remove secret/files that contain secret from previous commit
-`git rebase -i 05c93ca40fbdd60d373a5d4531ec01dac7ddbe66~1`
-- An interative editor is the same as vim using e to edit pick to edit
-`git add .`
-`git commit -amend`
-`git rebase --continue`
+#==============================================================================
+# Terraform Variables File (dev.tfvars)
+#==============================================================================
+# This file contains variable values for the development environment.
+# 
+# Purpose:
+# - Defines environment-specific values for Terraform variables
+# - Separates configuration from code for better maintainability
+# - Enables different configurations across environments (dev, uat, prod)
+#
+# Usage:
+# - Apply with: terraform apply -var-file="dev.tfvars"
+# - Plan with: terraform plan -var-file="dev.tfvars"
+# - Variables defined here override default values in variables.tf
+# - Define a variable in variables.tf with the same name to use these values
+#
+# Security Notes:
+# - Keep sensitive values secure and consider using environment variables
+# - Use terraform.tfvars.example for template without sensitive data
+# - Never commit sensitive credentials to version control
+#==============================================================================
+
+//// Azure Service Principal
+ARM_SUBSCRIPTION_ID = 
+ARM_TENANT_ID = 
+ARM_CLIENT_ID = 
+ARM_CLIENT_SECRET = 
+
+//// Agent VM Credentials
+admin_password =
+
+
+///// Resource location
+ARM_LOCATION = "Southeast Asia"
 
 
 <!-- ROADMAP -->

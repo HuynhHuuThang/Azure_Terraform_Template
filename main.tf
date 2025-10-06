@@ -1,8 +1,4 @@
 ##*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*##
-#  Deploy resource for multiple environment           #
-#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
-
-##*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*##
 #                   Commons Datas                     #
 #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
 
@@ -16,23 +12,36 @@ terraform {
 }
 
 provider "azurerm" {
-  features {}
-  client_id = var.ARM_CLIENT_ID
-  client_secret = var.ARM_CLIENT_SECRET
-  tenant_id = var.ARM_TENANT_ID
-  subscription_id = var.ARM_SUBSCRIPTION_ID
+  features {
+  }
 }
 ##*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*##
 #                   Resource Group                    #
 #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
-module "dev" {
-  source = "./environment/dev"
-  ARM_SUBSCRIPTION_ID = var.ARM_SUBSCRIPTION_ID
-  ARM_TENANT_ID = var.ARM_TENANT_ID
-  ARM_CLIENT_ID = var.ARM_CLIENT_ID
-  ARM_CLIENT_SECRET = var.ARM_CLIENT_SECRET
-  admin_password = var.admin_password
-  subnet_id = var.dev_subnet_id
-  public_ip_id = var.public_ip_id
+module "resource_group" {
+  source              = "./modules/resource_group"
+  resource_group_name = var.resource_group_name
+  location            = var.location
 }
+##*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*##
+#                   1.Module Virtual Network          #
+#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
 
+module "virtual_network" {
+  source               = "./modules/virtual_network"
+  resource_group_name  = module.resource_group.rg_name
+  location             = var.location
+  virtual_network_name = var.virtual_network_name
+  vnet_address_range   = var.vnet_address_range
+}
+##*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*##
+#                   2.Module Virtual Subnet           #
+#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
+module "subnet" {
+  source = "./modules/virtual_network/subnet"
+  resource_group_name = var.resource_group_name
+  location = var.location
+  subnet_dev_name = var.subnet_dev_name
+  subnet_dev_ip_range = var.subnet_dev_ip_range
+  virtual_network_name = module.virtual_network.virtual_network_name
+}

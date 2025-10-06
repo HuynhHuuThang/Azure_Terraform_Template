@@ -28,7 +28,11 @@ variable "ARM_CLIENT_SECRET" {
 #   default = "2uM8Q~.KQ4H0V~KY2.juaUWYaz4EbNVZHqIRDb7L"
   sensitive = true
 }
-
+variable "ARM_LOCATION" {
+  description = "Specifies the location for the resource group and all the resources"
+  type        = string
+  default     = "southeastasia"
+}
 variable "project_name" {
   description = "the name of project"
   type = string
@@ -71,13 +75,27 @@ variable "vnet_address_range" {
 ##*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*##
 #                2. Subnet Variables                  #
 #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
-variable "subnet_name" {
+variable "server_subnet_name" {
   description = "name of dev subnet"
   type = string
   default = "subnet"
 }
 variable "subnet_dev_ip_range" {
   description = "IP range for dev subnet"
+  type = string
+  default = "40.144.100.0/24"
+}
+variable "subnet_id" {
+  description = "Use Ouput data of Subnet to make Input"
+  type = string
+}
+variable "sql_subnet_name" {
+  description = "name of sql subnet"
+  type = string
+  default = "subnet"
+}
+variable "subnet_sql_ip_range" {
+  description = "IP range for sql subnet"
   type = string
   default = "40.144.100.0/24"
 }

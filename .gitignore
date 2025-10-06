@@ -1,4 +1,4 @@
-/environement/dev/variables/dev.tfvars
+/environment/dev/variables/dev.tfvars
 /environment/dev/variables/dev.backend.tfvars
 /environment/dev/.terraform/
 *.lock.hcl
@@ -7,4 +7,3 @@
 *.env
 *.terraform
 *.tfvars
-*.txt

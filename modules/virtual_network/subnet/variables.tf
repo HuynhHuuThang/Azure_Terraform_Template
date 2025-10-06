@@ -1,3 +1,5 @@
+
+
 ##*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*##
 #                   Commons Variables                 #
 #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
@@ -14,12 +16,12 @@ variable "location" {
 #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
 #*                   Subnets Variables               *#
 #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
-variable "subnet_dev_name" {
-  description = "name of subnet for dev env"
+variable "subnet_name" {
+  description = "name of subnet for server env"
   type = string
 }
-variable "subnet_dev_ip_range" {
-  description = "IP range for dev subnet"
+variable "subnet_ip_range" {
+  description = "IP range for server subnet"
   type = string
 }
 

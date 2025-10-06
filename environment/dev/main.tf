@@ -42,9 +42,9 @@ module "resource_group" {
   resource_group_name = " ${var.project_name}-${var.resource_group_name}-${var.environment}-${random_string.random.result}"
   location            = var.location
 }
-#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*##
-#                 1.Module Virtual Network          #
-#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
+##*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*##
+#                   1.Module Virtual Network          #
+#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
 
 module "virtual_network" {
   source               = "../../modules/virtual_network"
@@ -56,12 +56,22 @@ module "virtual_network" {
 ##*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*##
 #                   2.Module Virtual Subnet           #
 #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
-module "dev_subnet" {
+module "server_subnet" {
   source = "../../modules/virtual_network/subnet"
   resource_group_name = module.resource_group.rg_name
   location = var.location
-  subnet_dev_name = "${var.project_name}-${var.virtual_network_name}-${var.subnet_name}-${var.environment}"
-  subnet_dev_ip_range = var.subnet_dev_ip_range
+  subnet_name = "${var.project_name}-${var.virtual_network_name}-${var.subnet_name}-${var.environment}"
+  subnet_ip_range = var.subnet_dev_ip_range
+  virtual_network_name = module.virtual_network.virtual_network_name
+  depends_on = [ module.virtual_network ]
+}
+
+module "sql_subnet" {
+  source = "../../modules/virtual_network/subnet"
+  resource_group_name = module.resource_group.rg_name
+  location = var.location
+  subnet_name = "${var.project_name}-${var.virtual_network_name}-sql-${var.environment}"
+  subnet_ip_range = var.subnet_sql_ip_range
   virtual_network_name = module.virtual_network.virtual_network_name
   depends_on = [ module.virtual_network ]
 }
@@ -87,8 +97,8 @@ module "agent_vm_nic" {
   ip_configuration_name = "${var.project_name}-agent-${var.ip_configuration_name}-${var.environment}"
   private_ip_address_allocation = var.private_ip_address_allocation
   public_ip_id = module.agent_public_ip.public_ip_id
-  subnet_id = module.dev_subnet.dev_subnet_id
-  depends_on = [ module.agent_public_ip, module.dev_subnet ]
+  subnet_id = module.server_subnet.server_subnet_id
+  depends_on = [ module.agent_public_ip, module.server_subnet ]
 }
 
 ##*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*##
