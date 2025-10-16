@@ -25,14 +25,3 @@ provider "azurerm" {
 ##*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*##
 #                   Resource Group                    #
 #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#
-module "dev" {
-  source = "./environment/dev"
-  ARM_SUBSCRIPTION_ID = var.ARM_SUBSCRIPTION_ID
-  ARM_TENANT_ID = var.ARM_TENANT_ID
-  ARM_CLIENT_ID = var.ARM_CLIENT_ID
-  ARM_CLIENT_SECRET = var.ARM_CLIENT_SECRET
-  admin_password = var.admin_password
-  subnet_id = var.dev_subnet_id
-  public_ip_id = var.public_ip_id
-}
-
